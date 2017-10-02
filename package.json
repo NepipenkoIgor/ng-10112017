@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "ng": "ng",
     "start": "ng serve --host 0.0.0.0",
     "build": "ng build --output-hashing=all --delete-output-path --sourcemaps=false --prod",
     "test": "ng test",
