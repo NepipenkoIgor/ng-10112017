@@ -27,12 +27,11 @@
 
 <course-header>
 
-  <img [attr.src]="safeLogo" (click)="logoDesc()">
+  <img [attr.src]="logo | urlSantizer" (click)="logoDesc()">
 
 
   <div class="right-side">
-    <course-search [placeholder]="placeholder"
-     (mySearch)="text=$event"></course-search>
+    <course-search [placeholder]="placeholder" (mySearch)="text=$event"></course-search>
   </div>
 
   <span [innerHTML]="desc"></span>
@@ -40,4 +39,15 @@
 
 </course-header>
 
-{{text}}
+<div *ngIf="products$ | async as products; else loadGif">
+  <!-- first/last/even/odd/index-->
+  <div *ngFor="let product of products | productsFilter:text; index as i; odd as isOdd ">
+    <course-card [product]="product" [position]="i+1" [isOdd]="isOdd">
+
+    </course-card>
+  </div>
+</div>
+
+<ng-template #loadGif>
+  <img [src]="loadImg" alt="">
+</ng-template>

@@ -1,0 +1,13 @@
+<mat-card [ngClass]="{background: isOdd}">
+  <mat-card-header>
+    <div class="position">{{position}}</div>
+    <img class="avatar" [src]="product?.picture"
+    (mouseenter)="t.show()"
+    (mouseleave)="t.hide()"
+    />
+    <div class="name" [courseTooltip]="product.price" #t="tooltip">{{product.title}}</div>
+    <!-- <div class="price">
+      {{product.price | currency:'USD':true:'1.0-0'}}
+    </div> -->
+  </mat-card-header>
+</mat-card>
