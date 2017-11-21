@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+// import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
-import { products$ } from './data';
+// import { products$ } from './data/custom';
 // import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
+import { ProductsService } from './common/services/products.service';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   public constructor(
-    private _santizer: DomSanitizer
+    // private _santizer: DomSanitizer
+    private _productsService: ProductsService
   ) { }
 
   public ngOnInit(): void {
@@ -34,7 +36,7 @@ export class AppComponent implements OnInit, OnDestroy {
     //   console.log(products)
     //   this.products = products;
     // });
-    this.products$ = products$;
+    this.products$ = this._productsService.products$;
   }
 
   public ngOnDestroy(): void {
@@ -44,4 +46,9 @@ export class AppComponent implements OnInit, OnDestroy {
   public logoDesc(): void {
     alert(this.desc);
   }
+
+  public chooseFirst(product: Product): void {
+    // console.log(product);
+  }
+
 }

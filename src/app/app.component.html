@@ -41,7 +41,9 @@
 
 <div *ngIf="products$ | async as products; else loadGif">
   <!-- first/last/even/odd/index-->
-  <div *ngFor="let product of products | productsFilter:text; index as i; odd as isOdd ">
+  <div *ngFor="let product of products | productsFilter:text;first as f; index as i; odd as isOdd "
+  courseInit [product]="product"
+    [first]="f" (chooseFirst)="chooseFirst($event)">
     <course-card [product]="product" [position]="i+1" [isOdd]="isOdd">
 
     </course-card>
