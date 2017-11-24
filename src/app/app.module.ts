@@ -14,6 +14,9 @@ import { InitDirective } from './common/directives/init.directive';
 import { ProductsService } from './common/services/products.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BASE_URL, BASE_URL_TOKEN } from './config';
+import { ModalComponent } from './common/components/modal/modal.component';
+import { FullCardComponent } from './card/full-card/full-card.component';
+import { ModalService } from './common/components/modal/modal.service';
 // import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
@@ -25,7 +28,9 @@ import { BASE_URL, BASE_URL_TOKEN } from './config';
     TooltipDirective,
     UrlSantizePipe,
     ProductsFilterPipe,
-    InitDirective
+    InitDirective,
+    ModalComponent,
+    FullCardComponent
   ],
   imports: [
     BrowserModule,
@@ -35,10 +40,12 @@ import { BASE_URL, BASE_URL_TOKEN } from './config';
     MatCardModule,
     HttpClientModule
   ],
+  entryComponents: [FullCardComponent],
   providers: [
     // key /                    value
     // { provide: ProductsService, useClass: ProductsService }
     ProductsService,
+    ModalService,
     { provide: BASE_URL_TOKEN, useValue: BASE_URL, multi: true },
     { provide: 'BASE_URL', useValue: 'http://localhost:8091', multi: true },
   ],

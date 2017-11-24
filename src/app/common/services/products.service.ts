@@ -5,13 +5,18 @@ import {
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import {
   HttpClient,
+  HttpErrorResponse,
   // HttpResponse
 } from '@angular/common/http';
 import { BASE_URL_TOKEN } from '../../config';
+
+type Response = { data: Product[] };
 
 @Injectable()
 export class ProductsService {
@@ -27,10 +32,15 @@ export class ProductsService {
 
   public get products$(): Observable<Product[]> {
 
-    return this._http.get(`${this._baseUrl[0]}/products`)
+    return this._http.get<Response>(`${this._baseUrl[0]}/products`)
       // TODO types ?
       // tslint:disable-next-line
-      .map((res: any) => res.data);
+      .map((res: Response) => res.data)
+      .catch((err: HttpErrorResponse) => {
+        // tslint:disable-next-line
+        console.log(err)
+        return Observable.throw(err.message);
+      });
   }
 
 }

@@ -5,6 +5,15 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 // import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { ProductsService } from './common/services/products.service';
+import { ModalService } from './common/components/modal/modal.service';
+import { FullCardComponent } from './card/full-card/full-card.component';
+// import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
+// import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+
+// import 'rxjs/add/observable/interval';
+// import 'rxjs/add/observable/fromEvent';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +36,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public constructor(
     // private _santizer: DomSanitizer
-    private _productsService: ProductsService
+    private _productsService: ProductsService,
+    private _modalService: ModalService
   ) { }
 
   public ngOnInit(): void {
@@ -37,6 +47,45 @@ export class AppComponent implements OnInit, OnDestroy {
     //   this.products = products;
     // });
     this.products$ = this._productsService.products$;
+
+    // this._productsService.products$.subscribe((res: Product[]) => {
+    //   console.log(res);
+    // }, (err) => {
+    //   console.log('our err', err);
+    // }, () => {
+    //   console.log('complete');
+    // });
+
+    // let a$: Observable<number> = Observable.interval(1000);
+    // let b$: Observable<MouseEvent> = Observable.fromEvent(window, 'click');
+
+    let globalCount: number = 0;
+    const c$$: ReplaySubject<number> = new ReplaySubject(Number.POSITIVE_INFINITY);
+
+    const subscription: Subscription = c$$
+      .subscribe((count: number) => {
+        // tslint:disable-next-line
+        console.log('first', count);
+      });
+
+
+    setTimeout(() => {
+      subscription.unsubscribe();
+    }, 5000);
+
+    setTimeout(() => {
+
+      c$$
+        .subscribe((count: number) => {
+          // tslint:disable-next-line
+          console.log('second', count);
+        });
+    }, 7000);
+
+    setInterval(() => {
+      c$$.next(globalCount++);
+    }, 1000);
+
   }
 
   public ngOnDestroy(): void {
@@ -47,8 +96,18 @@ export class AppComponent implements OnInit, OnDestroy {
     alert(this.desc);
   }
 
+  public openFullCard(product: Product): void {
+    this._modalService.open({
+      component: FullCardComponent,
+      context: {
+        product
+      }
+    });
+  }
+
   public chooseFirst(product: Product): void {
-    // console.log(product);
+    // tslint:disable-next-line
+    console.log(product);
   }
 
 }
