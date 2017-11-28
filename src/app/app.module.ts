@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatInputModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatInputModule, MatToolbarModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
@@ -17,6 +17,10 @@ import { BASE_URL, BASE_URL_TOKEN } from './config';
 import { ModalComponent } from './common/components/modal/modal.component';
 import { FullCardComponent } from './card/full-card/full-card.component';
 import { ModalService } from './common/components/modal/modal.service';
+import { CartComponent } from './cart/cart.component';
+import { CartService } from './cart/cart.service';
+import { CartListComponent } from './cart/cart-list/cart-list.component';
+
 // import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
@@ -30,7 +34,9 @@ import { ModalService } from './common/components/modal/modal.service';
     ProductsFilterPipe,
     InitDirective,
     ModalComponent,
-    FullCardComponent
+    FullCardComponent,
+    CartComponent,
+    CartListComponent
   ],
   imports: [
     BrowserModule,
@@ -38,18 +44,28 @@ import { ModalService } from './common/components/modal/modal.service';
     MatInputModule,
     MatToolbarModule,
     MatCardModule,
+    MatButtonModule,
     HttpClientModule
   ],
-  entryComponents: [FullCardComponent],
+  entryComponents: [FullCardComponent, CartListComponent],
   providers: [
     // key /                    value
     // { provide: ProductsService, useClass: ProductsService }
     ProductsService,
     ModalService,
-    { provide: BASE_URL_TOKEN, useValue: BASE_URL, multi: true },
-    { provide: 'BASE_URL', useValue: 'http://localhost:8091', multi: true },
+    CartService,
+    {
+      provide: BASE_URL_TOKEN,
+      useValue: BASE_URL,
+      multi: true
+    },
+    {
+      provide: 'BASE_URL',
+      useValue: 'http://localhost:8091',
+      multi: true
+    },
   ],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

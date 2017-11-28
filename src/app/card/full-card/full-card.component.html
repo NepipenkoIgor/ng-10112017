@@ -4,4 +4,5 @@
     <mat-card-subtitle>{{product.price}}</mat-card-subtitle>
     <img mat-card-image [src]="product.picture" alt="">
   </mat-card-header>
+  <button class="buy_button" (click)="buy({product:product,action:'add'})">BUY</button>
 </mat-card>

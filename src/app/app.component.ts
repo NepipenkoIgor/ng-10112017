@@ -8,9 +8,9 @@ import { ProductsService } from './common/services/products.service';
 import { ModalService } from './common/components/modal/modal.service';
 import { FullCardComponent } from './card/full-card/full-card.component';
 // import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
+// import { Subscription } from 'rxjs/Subscription';
 // import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+// import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 // import 'rxjs/add/observable/interval';
 // import 'rxjs/add/observable/fromEvent';
@@ -59,32 +59,32 @@ export class AppComponent implements OnInit, OnDestroy {
     // let a$: Observable<number> = Observable.interval(1000);
     // let b$: Observable<MouseEvent> = Observable.fromEvent(window, 'click');
 
-    let globalCount: number = 0;
-    const c$$: ReplaySubject<number> = new ReplaySubject(Number.POSITIVE_INFINITY);
-
-    const subscription: Subscription = c$$
-      .subscribe((count: number) => {
-        // tslint:disable-next-line
-        console.log('first', count);
-      });
-
-
-    setTimeout(() => {
-      subscription.unsubscribe();
-    }, 5000);
-
-    setTimeout(() => {
-
-      c$$
-        .subscribe((count: number) => {
-          // tslint:disable-next-line
-          console.log('second', count);
-        });
-    }, 7000);
-
-    setInterval(() => {
-      c$$.next(globalCount++);
-    }, 1000);
+    // let globalCount: number = 0;
+    // const c$$: ReplaySubject<number> = new ReplaySubject(Number.POSITIVE_INFINITY);
+    //
+    // const subscription: Subscription = c$$
+    //   .subscribe((count: number) => {
+    //     // tslint:disable-next-line
+    //     console.log('first', count);
+    //   });
+    //
+    //
+    // setTimeout(() => {
+    //   subscription.unsubscribe();
+    // }, 5000);
+    //
+    // setTimeout(() => {
+    //
+    //   c$$
+    //     .subscribe((count: number) => {
+    //       // tslint:disable-next-line
+    //       console.log('second', count);
+    //     });
+    // }, 7000);
+    //
+    // setInterval(() => {
+    //   c$$.next(globalCount++);
+    // }, 1000);
 
   }
 

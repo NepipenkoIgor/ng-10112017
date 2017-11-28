@@ -1,0 +1,13 @@
+course-cart-list mat-card {
+  width: 50%;
+  display: block;
+  margin: 15% auto;
+}
+
+course-full-card mat-card .mat-card-header {
+  display: block;
+}
+
+.remove {
+  color: red;
+}

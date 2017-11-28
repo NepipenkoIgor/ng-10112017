@@ -1,0 +1,9 @@
+<mat-card
+  *ngFor="let product of products ; index as position">
+  <mat-card-header>
+    <div class="position">{{position+1}}</div>
+    <img class="avatar" [src]="product?.picture"/>
+    <div class="name">{{product.title}}</div>
+    <div class="remove" (click)="remove({product:product, action:'remove'})">Remove</div>
+  </mat-card-header>
+</mat-card>

@@ -6,7 +6,7 @@ type Env = {
 type Person = {
   name: string,
   age?: number
-}
+};
 
 
 type Product = {
@@ -14,4 +14,9 @@ type Product = {
   price: string,
   picture: string,
   title: string
-}
+};
+
+type CartItem = {
+  product: Product,
+  action: 'add' | 'remove'
+};

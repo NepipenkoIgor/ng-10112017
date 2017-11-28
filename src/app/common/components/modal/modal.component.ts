@@ -1,15 +1,14 @@
 import {
   Component, ComponentFactory, ComponentFactoryResolver,
   ComponentRef, HostListener, OnInit, ViewChild,
-  ViewContainerRef, ViewEncapsulation
+  ViewContainerRef
 } from '@angular/core';
 import { ModalService } from './modal.service';
 
 @Component({
   selector: 'course-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
 

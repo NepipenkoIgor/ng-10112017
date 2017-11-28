@@ -1,10 +1,9 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'course-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
 
