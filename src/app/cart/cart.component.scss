@@ -1,7 +1,11 @@
 :host{
-  width: 45%;
   display: block;
-  float: right;
+  height: 60px;
+  width: 100px;
+  position: absolute;
+  right: 170px;
+  top: 2px;
+  cursor:pointer;
 }
 .counter {
   background-color: lightgreen;

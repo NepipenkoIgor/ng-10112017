@@ -1,24 +1,18 @@
-course-full-card mat-card{
+:host{
  width:50%;
  display:block;
  margin: 15% auto;
  }
 
-course-full-card mat-card .mat-card-header{
+mat-card mat-card-header{
   display: block;
 }
-
-.avatar {
-  width: 40px;
-  height:40px;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  float: left;
-  margin-right: 15px
+.mat-card-image {
+  margin: 0 -24px ;
 }
-
-.name, .position, .price {
-  line-height: 45px;
-  float: left;
-  margin: 0 20px;
+mat-card-actions {
+  background-color: white;
+  margin: -3px -24px 0 -24px;
+  padding: 10px 10px 20px;
+  height: 45px;
 }
