@@ -5,7 +5,8 @@
     <img mat-card-image [src]="product.picture" alt="">
   </mat-card-header>
   <mat-card-actions>
-    <button mat-button class="buy_button" (click)="buy({product:product,action:'add'})">BUY</button>
+    <button mat-button class="buy_button" (click)="buy(product)">BUY</button>
+    <button mat-button class="buy_button" [routerLink]="['products', product._id]">About product</button>
   </mat-card-actions>
 
 </mat-card>

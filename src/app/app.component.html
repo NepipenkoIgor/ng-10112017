@@ -29,6 +29,11 @@
 
   <img [attr.src]="logo | urlSantizer" (click)="logoDesc()">
 
+  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['products']" routerLinkActive="active">Products</button>
+    <button mat-menu-item  [routerLink]="['info']" routerLinkActive="active">Info</button>
+  </mat-menu>
 
   <div class="right-side">
     <course-search [placeholder]="placeholder" (mySearch)="text=$event"></course-search>
@@ -40,22 +45,6 @@
 
 </course-header>
 
-<div *ngIf="products$ | async as products; else loadGif">
-  <!-- first/last/even/odd/index-->
-  <div *ngFor="let product of products | productsFilter:text;first as f; index as i; odd as isOdd "
-  courseInit [product]="product"
-    [first]="f" (chooseFirst)="chooseFirst($event)" (click)="openFullCard(product)">
-    <course-card [product]="product" [position]="i+1" [isOdd]="isOdd">
+<router-outlet></router-outlet>
 
-    </course-card>
-  </div>
-</div>
-
-<ng-template #loadGif>
-  <img [src]="loadImg" alt="">
-</ng-template>
-
-
-<course-modal>
-
-</course-modal>
+<course-modal></course-modal>

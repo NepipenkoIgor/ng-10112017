@@ -4,9 +4,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 // import { products$ } from './data/custom';
 // import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-import { ProductsService } from './common/services/products.service';
-import { ModalService } from './common/components/modal/modal.service';
-import { FullCardComponent } from './card/full-card/full-card.component';
+// import { ModalService } from './common/components/modal/modal.service';
+// import { FullCardComponent } from './products/card/full-card/full-card.component';
 // import { Subject } from 'rxjs/Subject';
 // import { Subscription } from 'rxjs/Subscription';
 // import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -14,6 +13,8 @@ import { FullCardComponent } from './card/full-card/full-card.component';
 
 // import 'rxjs/add/observable/interval';
 // import 'rxjs/add/observable/fromEvent';
+// import { Store } from '@ngrx/store';
+// import { GetProductsPanding } from './common/actions/products.actions';
 
 @Component({
   selector: 'app-root',
@@ -36,8 +37,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public constructor(
     // private _santizer: DomSanitizer
-    private _productsService: ProductsService,
-    private _modalService: ModalService
+    // private _modalService: ModalService,
+    // private _store: Store<StoreStates>,
   ) { }
 
   public ngOnInit(): void {
@@ -46,7 +47,8 @@ export class AppComponent implements OnInit, OnDestroy {
     //   console.log(products)
     //   this.products = products;
     // });
-    this.products$ = this._productsService.products$;
+    // this._store.dispatch(new GetProductsPanding());
+    // this.products$ = this._store.select('products');
 
     // this._productsService.products$.subscribe((res: Product[]) => {
     //   console.log(res);
@@ -96,18 +98,18 @@ export class AppComponent implements OnInit, OnDestroy {
     alert(this.desc);
   }
 
-  public openFullCard(product: Product): void {
-    this._modalService.open({
-      component: FullCardComponent,
-      context: {
-        product
-      }
-    });
-  }
+  // public openFullCard(product: Product): void {
+  //   this._modalService.open({
+  //     component: FullCardComponent,
+  //     context: {
+  //       product
+  //     }
+  //   });
+  // }
 
-  public chooseFirst(product: Product): void {
-    // tslint:disable-next-line
-    console.log(product);
-  }
+  // public chooseFirst(product: Product): void {
+  //   // tslint:disable-next-line
+  //   console.log(product);
+  // }
 
 }

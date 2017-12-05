@@ -1,11 +1,11 @@
 <mat-card>
-  <mat-card-header *ngFor="let product of products ; index as position">
+  <mat-card-header *ngFor="let product of products$ | async ; index as position">
     <mat-card-title>{{product.title}}</mat-card-title>
     <mat-card-subtitle>{{product.price}}</mat-card-subtitle>
-    <div class="remove" (click)="remove({product:product, action:'remove'})">x</div>
+    <div class="remove" (click)="remove(product)">x</div>
   </mat-card-header>
   <mat-card-actions>
-    <button mat-button class="buy_button">Make order</button>
+    <button mat-button class="buy_button" [routerLink]="['order']">Make order</button>
   </mat-card-actions>
 
 </mat-card>

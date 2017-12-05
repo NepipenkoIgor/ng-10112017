@@ -52,7 +52,7 @@ export class ModalComponent implements OnInit {
     if (code !== 27) {
       return;
     }
-    this._modalContext.destroy();
+    this._modalContext && this._modalContext.destroy();
     this.isOpen = false;
   }
 

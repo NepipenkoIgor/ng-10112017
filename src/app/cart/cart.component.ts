@@ -1,7 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { CartService } from './cart.service';
+// import { CartService } from './cart.service';
 import { ModalService } from '../common/components/modal/modal.service';
 import { CartListComponent } from './cart-list/cart-list.component';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'course-cart',
@@ -13,12 +14,12 @@ export class CartComponent implements OnInit {
   private _init: boolean = true;
 
   public constructor(
-    private _cartService: CartService,
+    private _store: Store<StoreStates>,
     private _modalService: ModalService
   ) { }
 
   public ngOnInit(): void {
-    this._cartService.cartSequence$.subscribe((products: Product[]) => {
+    this._store.select('cartProducts').subscribe((products: Product[]) => {
       this.products = products;
       if (!this._init && !this.products.length) {
         this._modalService.close();
@@ -37,7 +38,6 @@ export class CartComponent implements OnInit {
     this._modalService.open({
       component: CartListComponent,
       context: {
-        products: this.products
       }
     });
   }
