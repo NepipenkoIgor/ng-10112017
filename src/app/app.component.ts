@@ -4,6 +4,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 // import { products$ } from './data/custom';
 // import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
+// import { GetProductsPanding } from './common/actions/products.actions';
+// import { Store } from '@ngrx/store';
 // import { ModalService } from './common/components/modal/modal.service';
 // import { FullCardComponent } from './products/card/full-card/full-card.component';
 // import { Subject } from 'rxjs/Subject';
@@ -42,6 +44,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit(): void {
+    // this._store.dispatch(new GetProductsPanding());
     // this.safeLogo = this._santizer.bypassSecurityTrustUrl(this._logo);
     // this._productsSubcription = products$.subscribe((products: Product[]) => {
     //   console.log(products)

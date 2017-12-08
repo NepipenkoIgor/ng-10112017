@@ -1,10 +1,7 @@
 import { environment } from '../environments/environment';
 import { InjectionToken } from '@angular/core';
 import { Route } from '@angular/router';
-import { OrderComponent } from './order/order.component';
-import { InfoComponent } from './info/info.component';
 import { ProductsComponent } from './products/products.component';
-import { OrderGuardService } from './order/order-guard.service';
 import { ProductComponent } from './products/product/product.component';
 import { ProductResolveService } from './products/product/product-resolve.service';
 
@@ -25,7 +22,7 @@ export const routes: Route[] = [
         component: ProductsComponent
       },
       {
-        path: ':id',
+        path: ':id/:name',
         component: ProductComponent,
         resolve: {
           product: ProductResolveService
@@ -42,12 +39,11 @@ export const routes: Route[] = [
   },
   {
     path: 'order',
-    component: OrderComponent,
-    canActivate: [OrderGuardService]
+    loadChildren: 'app/order/order.module#OrderModule'
   },
   {
     path: 'info',
-    component: InfoComponent
+    loadChildren: 'app/info/info.module#InfoModule'
   },
   {
     path: '**',

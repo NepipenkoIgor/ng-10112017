@@ -2,8 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ModalService } from '../common/components/modal/modal.service';
 import { Store } from '@ngrx/store';
-import { GetProductsPanding } from '../common/actions/products.actions';
 import { FullCardComponent } from './card/full-card/full-card.component';
+import { GetProductsPanding } from '../common/actions/products.actions';
 
 @Component({
   selector: 'course-products',

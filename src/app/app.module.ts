@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -26,13 +26,11 @@ import { CartListComponent } from './cart/cart-list/cart-list.component';
 import { InterceptorService } from './common/services/interceptor.service';
 import { rootReducer } from './common/reducers/root.reducer';
 import { ProductsEffects } from './common/effects/products.effects';
-import { OrderComponent } from './order/order.component';
-import { InfoComponent } from './info/info.component';
 import { RouterModule } from '@angular/router';
 import { ProductsComponent } from './products/products.component';
-import { OrderGuardService } from './order/order-guard.service';
 import { ProductComponent } from './products/product/product.component';
 import { ProductResolveService } from './products/product/product-resolve.service';
+import { CustomPreloadService } from './common/services/custom-preload.service';
 
 // import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -50,8 +48,6 @@ import { ProductResolveService } from './products/product/product-resolve.servic
     FullCardComponent,
     CartComponent,
     CartListComponent,
-    OrderComponent,
-    InfoComponent,
     ProductsComponent,
     ProductComponent
   ],
@@ -64,7 +60,7 @@ import { ProductResolveService } from './products/product/product-resolve.servic
     MatButtonModule,
     MatMenuModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { preloadingStrategy: CustomPreloadService }),
     StoreModule.forRoot(rootReducer),
     EffectsModule.forRoot([
       ProductsEffects
@@ -79,8 +75,8 @@ import { ProductResolveService } from './products/product/product-resolve.servic
     // { provide: ProductsService, useClass: ProductsService }
     // ProductsService,
     ModalService,
-    OrderGuardService,
     ProductResolveService,
+    CustomPreloadService,
     //  CartService,
     {
       provide: HTTP_INTERCEPTORS,

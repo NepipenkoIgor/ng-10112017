@@ -1,3 +1,74 @@
-<p>
-  order works!
-</p>
+<!--FormControl-->
+<!--Template Driven-->
+<!--<div>-->
+<!--<input type="text" ngModel #c="ngModel" required minlength="4">-->
+<!--</div>-->
+<!--<pre>-->
+<!--{{c.valueChanges | async}}-->
+<!--{{c.valid }}-->
+<!--</pre>-->
+
+<!--<div ngForm f="ngForm">-->
+<!---->
+<!---->
+<!--</div>-->
+
+<form #f="ngForm" (ngSubmit)="submit(f.value)">
+  <input type="text" [ngClass]="{error:fn.invalid && fn.touched }" #fn="ngModel"
+    name="firstName" ngModel required minlength="4" courseNameValidator>
+  <input type="text" name="lastName"
+    [ngClass]="{error:ln.invalid && ln.touched }" #ln="ngModel"
+    ngModel required minlength="4">
+  <div ngModelGroup="passwordGroup" courseAsyncEqualValidator>
+    <input type="password" ngModel name="password" required minlength="4">
+    <input type="password" ngModel name="pconfirm" required minlength="4">
+  </div>
+  <button type="submit" [disabled]="f.invalid">Send</button>
+</form>
+<pre>
+{{f.value | json}}
+{{f.valid }}
+</pre>
+<hr>
+<hr>
+<!--Reactive-->
+<!--<div>-->
+<!--<input type="text" [formControl]="name">-->
+<!--</div>-->
+<!--<pre>-->
+<!--{{name.valueChanges | async}}-->
+<!--{{name.valid }}-->
+<!--</pre>-->
+<form [formGroup]="formModel" (ngSubmit)="submit(f.value)">
+  <input type="text" formControlName="firstName"  courseNameValidator>
+  <input type="text" [formControl]="formModel.get('lastName')">
+  <course-switcher formControlName="male" ></course-switcher>
+  <div formGroupName="passwordGroup" courseAsyncEqualValidator>
+    <input type="password" formControlName="password">
+    <input type="password" formControlName="pconfirm">
+  </div>
+  <button type="submit" [disabled]="formModel.invalid">Send</button>
+</form>
+<pre>
+{{formModel.value | json}}
+{{formModel.valid }}
+{{formModel.get('passwordGroup').pending }}
+</pre>
+
+
+<!--<form [formGroup]="formArrayModel">-->
+  <!--<ul formGroupName="emails">-->
+    <!--<li *ngFor="let e of formArrayModel.get('emails').controls; index as i">-->
+      <!--<input type="text" [placeholder]="e.placeholder" formControlName={{i}}>-->
+      <!--<pre>-->
+        <!--{{e.value | json}}-->
+      <!--</pre>-->
+    <!--</li>-->
+  <!--</ul>-->
+  <!--<button (click)="addEmail()">Add email</button>-->
+<!--</form>-->
+
+<!--<pre>-->
+<!--{{formArrayModel.value | json}}-->
+<!--{{formArrayModel.valid }}-->
+<!--</pre>-->

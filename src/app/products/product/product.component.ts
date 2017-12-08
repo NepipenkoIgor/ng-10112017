@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Data } from '@angular/router';
+import {
+  ActivatedRoute,
+  Data,
+} from '@angular/router';
 
 @Component({
   selector: 'course-product',
@@ -14,6 +17,9 @@ export class ProductComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
+    // this._activatedRoute.paramMap.subscribe((params: ParamMap) => {
+    //   console.log(params)
+    // })
     this._activatedRoute.data.subscribe((data: Data) => {
       // tslint:disable-next-line
       console.log(data);
