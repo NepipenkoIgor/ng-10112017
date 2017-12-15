@@ -31,6 +31,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './products/product/product.component';
 import { ProductResolveService } from './products/product/product-resolve.service';
 import { CustomPreloadService } from './common/services/custom-preload.service';
+import { SearchService } from './search/search.service';
 
 // import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -74,6 +75,7 @@ import { CustomPreloadService } from './common/services/custom-preload.service';
     // key /                    value
     // { provide: ProductsService, useClass: ProductsService }
     // ProductsService,
+    SearchService,
     ModalService,
     ProductResolveService,
     CustomPreloadService,

@@ -5,6 +5,7 @@ import { GET_PRODUCTS_PENDING, GetProductsSuccess } from '../actions/products.ac
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+
 @Injectable()
 export class ProductsEffects {
 

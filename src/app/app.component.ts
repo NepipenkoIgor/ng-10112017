@@ -4,6 +4,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 // import { products$ } from './data/custom';
 // import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
+// import { Observer } from 'rxjs/Observer';
 // import { GetProductsPanding } from './common/actions/products.actions';
 // import { Store } from '@ngrx/store';
 // import { ModalService } from './common/components/modal/modal.service';
@@ -17,6 +18,20 @@ import { Observable } from 'rxjs/Observable';
 // import 'rxjs/add/observable/fromEvent';
 // import { Store } from '@ngrx/store';
 // import { GetProductsPanding } from './common/actions/products.actions';
+import 'rxjs/add/operator/publish';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/observeOn';
+import 'rxjs/add/operator/subscribeOn';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/observable/from';
+// import { ConnectableObservable } from 'rxjs/Rx';
+// import { AsyncSubject } from 'rxjs/AsyncSubject';
+// import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+// import { ReplaySubject } from 'rxjs/ReplaySubject';
+//
+// import { async } from 'rxjs/scheduler/async';
+// import { queue } from 'rxjs/scheduler/queue';
+// import { asap } from 'rxjs/scheduler/asap';
 
 @Component({
   selector: 'app-root',
@@ -90,6 +105,72 @@ export class AppComponent implements OnInit, OnDestroy {
     // setInterval(() => {
     //   c$$.next(globalCount++);
     // }, 1000);
+
+    // const publisher$: ConnectableObservable<number> = Observable.create((observer: Observer<number>) => {
+    //   let count: number = 0;
+    //   const interval: any = setInterval(() => {
+    //     // if (count === 3) {
+    //     //   clearInterval(interval);
+    //     //   return observer.error('some err');
+    //     // }
+    //     // if (count > 5) {
+    //     //   clearInterval(interval);
+    //     //   return observer.complete();
+    //     // }
+    //     observer.next(count++);
+    //   }, 1000);
+    //
+    // })
+    //   .publish()
+
+    // publisher$.connect();
+
+    // publisher$.subscribe((value: number) => {
+    //   console.log('first', value)
+    // }, (err: any) => {
+    //   console.log(err)
+    // }, () => {
+    //   console.log('complete')
+    // })
+    //
+    // setTimeout(() => {
+    //   publisher$.subscribe((value: number) => {
+    //     console.log('second', value)
+    //   }, (err: any) => {
+    //     console.log(err)
+    //   }, () => {
+    //     console.log('complete')
+    //   })
+    // }, 5000)
+    //
+    // const s$$: ReplaySubject<number> = new ReplaySubject(Number.POSITIVE_INFINITY);
+    // s$$.subscribe((value: number) => {
+    //   console.log('first', value);
+    // })
+    // s$$.next(1);
+    // s$$.next(10);
+    // s$$.next(66);
+    //
+    // setTimeout(()=>{
+    //  // s$$.complete();
+    //   s$$.subscribe((value: number) => {
+    //     console.log('second', value);
+    //   })
+    // },5000)
+
+    // const arr: number[] = [];
+    // for (let i: number = 0; i < 1000; i++) {
+    //   arr.push(i);
+    // }
+    // console.time('test')
+    // Observable.from(arr)
+    //   .subscribeOn(async)
+    //   .map((x: number) => x ** 2)
+    //   .filter((x: number) => x % 2 === 0)
+    //   .subscribeOn(asap)
+    //   .subscribe(null, null, () => {
+    //     console.timeEnd('test')
+    //   });
 
   }
 
